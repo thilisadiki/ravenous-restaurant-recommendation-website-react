@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Business from './components/business';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      businesses: [
+        {
+          imageSrc: '',
+          name: 'MarginOtto Pfizzeria',
+          address: '1010 Paddington Way',
+          city: 'Flavortown',
+          state: 'NY',
+          zipCode: '10101',
+          category: 'Italian',
+          rating: 4.5,
+          reviewCount: 90,
+        },
+        // Add more hardcoded businesses as needed  git init ravenous
+
+      ],
+    };
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {/* other components go here */}
+        {this.state.businesses.map((business, index) => (
+          <Business key={index} business={business} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default App;
+
